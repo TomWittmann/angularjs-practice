@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<style>
+
+    /** This makes it so that the input will be lightblue when it 
+        is empty because it is required. If you start typing it will turn
+        white again.
+    */
+    input.ng-invalid {
+        background-color: lightblue;
+    }
+
+    /** This makes it so if the input is valid then the input
+        will be light coral colored.
+    */
+    input.ng-valid {
+        background-color: lightcoral;
+    }
+    /**
+    There are others such as ng-empty, ng-not-empty, ng-dirty, etc.
+    */
+</style>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+        Name: <input ng-model="name">
+
+        <!-- The ng-model directive provides CSS classes for HTML elements depending on their status. -->
+        <form name="myForm">
+            Enter your name:
+            <input name="myName" ng-model="myText" required>
+        </form>
+        
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.name = "John Doe";
+        });
+    </script>
+
+
+</body>
+
+</html>

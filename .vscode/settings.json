@@ -1,0 +1,6 @@
+/**
+Created this to make sure that errors don't show up for the styling with angular expressions.
+*/
+{
+    "html.validate.styles": false
+}

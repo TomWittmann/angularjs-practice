@@ -1,0 +1,41 @@
+<!-- Data binding in AngularJS is the synchronization between the model and the view.
+
+-->
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+    <!--  
+    You can use ng-bind or {{}} do display content from the model or you can use
+    the ng-model directive on HTML controls to bind the model to the view. 
+    -->
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <input ng-model="firstname">
+
+        <!-- You can use ng-click to add an onclick to an html element. -->
+        <h1 ng-click="changeName()">{{firstname}}</h1>
+
+    </div>
+
+    <script>
+        /**
+         * Applications in AngularJS are controlled by controllers.
+         *
+        */
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.firstname = "John";
+            $scope.lastname = "Doe";
+            $scope.changeName = function () {
+                $scope.firstname = "Greg";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

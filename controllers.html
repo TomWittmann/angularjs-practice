@@ -1,0 +1,49 @@
+<!-- AngularJS controllers control the data of AngularJS applications. 
+    AngularJS objects are regular JavaScript objects. -->
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        First Name: <input type="text" ng-model="firstName"><br>
+        Last Name: <input type="text" ng-model="lastName"><br>
+        <br>
+        Full Name: {{firstName + " " + lastName}}<br><br>
+
+        My full name is also {{fullName()}}
+
+        <ul>
+            <li ng-repeat="x in names">
+                {{ x.name + ', ' + x.country }}
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+
+        // In AngularJS the $scope object is the application object (the owner of application variables and functions.)
+        app.controller('myCtrl', function ($scope) {
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+
+            $scope.fullName = function () {
+                return $scope.firstName + ' ' + $scope.lastName;
+            };
+
+            $scope.names = [
+                { name: 'Jani', country: 'Norway' },
+                { name: 'Hege', country: 'Sweden' },
+                { name: 'Kai', country: 'Denmark' }
+            ];
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!--
+    An AngularJS module defines an application. 
+    
+    The module is a container for the different parts of an application
+    and for the application controllers.
+
+    Controllers always belong to a module.
+
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <!-- While it is common in HTML applications to place scripts at the end of the body element. 
+        It is recommended that you load the AngularJS library either in the head or at the start of body.
+        This is because calls to angular.module can only be compiled after the library has been loaded.
+    -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+    
+
+    <!-- Refer to the controller with the ng-controller directive. -->
+<div ng-app="myApp" ng-controller="myCtrl">
+{{ firstName + " " + lastName }}
+</div>
+
+<div ng-app="myApp" myDirective></div>
+
+<script>
+    // A module is created by using the AngularJS function angular.module.
+
+
+</script>
+<!-- It is comon to put the module and controllers in javascript files. -->
+<script src="modules/myApp.js"></script>
+<script src="controllers/myCtrl.js"></script>
+
+</body>
+</html>

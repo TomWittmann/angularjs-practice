@@ -1,0 +1,60 @@
+<!-- Filters can be added in AngularJS to format data. 
+
+    For example, date to format a date to a specified format,
+    json to format an object to a JSON string etc.
+-->
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="personCtrl">
+
+        <!-- Filters are added by using the pipe character followed by a filter.
+            Here the filter is uppercase.    
+        -->
+        <p>The name is <b>{{ lastName | uppercase }}</b></p>
+
+        <p>The capital letter name in lowercase is <b>{{ capName | lowercase }}</b></p>
+
+        <!-- You can also add filters to directives like ng-repeat. -->
+        <p ng-repeat="person in people | orderBy: 'age'">
+            {{ person.name + ' ' + person.age }}
+        </p>
+
+        <p ng-repeat="person in people">
+            {{ person.name | myFilter }}
+        </p>
+
+    </div>
+
+    <script>
+
+        var app = angular.module('myApp', []);
+
+        app.controller('personCtrl', function ($scope) {
+            $scope.firstName = "John",
+            $scope.lastName = "Doe",
+            $scope.capName = "CAP LETTERS";
+
+            $scope.people = [
+                {name: 'Tom', age: 25},
+                {name: 'Greg', age: 25},
+                {name: 'Sabin', age: 24},
+                {name: 'Spencer', age: 22}
+            ];
+        });
+
+        app.filter('myFilter', function() {
+            return function(x) {
+                return x + ' woooo!';
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

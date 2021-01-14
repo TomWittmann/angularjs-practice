@@ -1,0 +1,65 @@
+<!-- AngularJS directives are extended HTML attributes with the prefix ng. 
+-->
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+    <!-- The ng-app directive will auto-bootsrap (automatically initialize) the application when a webpage is loaded. -->
+    <div ng-app="myApp" ng-init="firstName='John'">
+
+        <p>Input something in the input box:</p>
+        <!-- ng-model binds the value of HTML controls to application data. -->
+        <p>Name: <input type="text" ng-model="firstName"></p>
+        <p>You wrote: {{ firstName }}</p>
+
+        <div ng-init="quantity=1; price=5">
+            <h2>Cost Calculator</h2>
+
+            Quantity: <input type="number" ng-model="quantity">
+            Price: <input type="number" ng-model="price">
+
+            <p><b>Total in dollar:</b> {{ quantity * price }}</p>
+        </div>
+
+        <!-- You can use ng-repeat to repeat HTML elements. -->
+        <div ng-init="names=['Tom', 'Sabin', 'Greg', 'Spencer']">
+            <p ng-repeat="i in names">
+                <b>{{ i }}</b>
+            </p>
+        </div>
+
+        <!-- Custom directive is declared in camel case and the tag is in camel-case-name -->
+        <my-directive></my-directive>
+
+        <!-- This won't show up because of restrict: "A" -->
+        <my-restricted-directive></my-restricted-directive>
+
+        <!-- This will show up because there is no restriction on "E" -->
+        <div my-restricted-directive></div>
+
+    </div>
+
+<script>
+var app = angular.module("myApp", []);
+app.directive("myDirective", function() {
+    return {
+        template: "<h1>This is my custom directive!</h1>"
+    };
+});
+
+// You can restrict a directive to only be allowed in certain cases. 
+// For example, E for element name, A for attribute, C for class, M for comment.
+// By default it is EA.
+app.directive("myRestrictedDirective", function() {
+    return {
+        restrict: "A",
+        template: "<h1>This is my restricted directive!</h1>"
+    }
+})
+</script>
+</body>
+
+</html>

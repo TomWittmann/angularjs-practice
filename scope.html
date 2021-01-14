@@ -1,0 +1,52 @@
+<!-- Scope is the binding part between the HTML (view) and the JavaScript (controller)
+    Scope is an object with the available properties and methods.    
+-->
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <!-- This will be red because the root scope is overriden by the controller scope. -->
+        <h1>{{color}}</h1>
+
+        <h1>{{carname}}</h1>
+
+        <!-- When dealing with the ng-repeat directive, each repitition has access to the current repitition object. -->
+        <p ng-repeat="person in people">{{person.name + " is " + person.age + " years old!"}}</p>
+
+    </div>
+
+    <script>
+
+        var app = angular.module('myApp', []);
+
+        // All applications have a $rootScope which is the scope created on the HTML element that contains the ng-app directive.
+        // The root scope is available in the entire application.
+        app.run(function($rootScope) {
+            $rootScope.color = 'blue';
+        });
+
+        // When adding properties to the $scope object in the controller the view (HTML) gets access to these properties.
+        // In the view, you do not use the prefix $scope.
+        app.controller('myCtrl', function($scope) {
+            $scope.carname = 'volvo';
+
+            $scope.color = 'red';
+
+            $scope.people = [
+                {name: 'Tom', age: 25},
+                {name: 'Greg', age: 25},
+                {name: 'Sabin', age: 24},
+                {name: 'Spencer', age: 22}
+            ];
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!-- AngularJS expressions can be written inside double braces
+    They can also be written inside a directive ng-bind="expression"
+
+    AngularJS expressions do not support conditionals, loops, or exceptions.
+
+    However, AngularJS expressions support filters.
+
+-->
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+    <!-- If you remove the ng-app directive, HTML will display the expression as it is without solving it. 
+    
+        It will just keep {{ 5 + 5 }}
+    -->
+<div ng-app="" ng-init="myCol='lightblue'">
+  <p>My first expression: {{ 5 + 5 }}</p>
+
+    <!-- You can change the color of an input box by changing its value.
+    
+    ng-model makes it say lightblue inside the input
+    -->
+    <input style="background-color:{{myCol}}" ng-model="myCol">
+
+    <!-- Using ng-init is not very common. A better way to initialize is with controllers.-->
+    <div ng-init="quantity=2;cost=10">
+        <p>Total cost in dollars: {{ quantity * cost }}</p>
+        <p>Total cost in dollars: <span ng-bind="quantity * cost"></span></p>
+    </div>
+
+    <div ng-init="firstName='Tom';lastName='Wittmann'">
+        <p>My name is: {{firstName + " " + lastName}}</p>
+        <p>My name is: <span ng-bind="firstName + ' ' + lastName"></span></p>
+    </div>
+
+    <!--
+        AngularJS objects are also like JavaScript objects.
+    -->
+    <div ng-init="person={firstName: 'Tom', lastName: 'Wittmann'}"></div>
+    <p>My name is: {{ person.firstName + ' ' + person.lastName }}</p>
+
+    <!--
+        You can also use arrays in AngularJS
+    -->
+    <div ng-init="favFoods=['cereal', 'apples', 'cookies']">
+        <p>My favorite foods are: {{ favFoods[0] + ', ' + favFoods[1] + ', ' + ' and ' + favFoods[2] + '!' }}</p>
+    </div>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<!--AngularJS extends HTML attributes with Directives and binds data to HTML with Expressions.
+
+AngularJS directives are HTML attributes with an ng prefix.
+-->
+
+
+<html lang="en">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+    <!-- The favColor variable will appear in the expression favColor -->
+    <div ng-app="" ng-init="favColor='red'">
+        <!-- What you type into the input will get displayed in the paragraph tag at real time. -->
+        <p>Name: <input type="text" ng-model="name"></p>
+        <p ng-bind="name"></p>
+        <p>My favorite color is {{ favColor }}</p>
+
+        <p>Look at me using an expression: {{10 + 12}}</p>
+
+
+    </div>
+    
+
+</body>
+</html>
